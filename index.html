@@ -7,9 +7,12 @@
 <title>DentaLARROQUE · Clínica dental en Boadilla del Monte y Majadahonda</title>
 <meta name="description" content="Clínica dental DentaLARROQUE en Boadilla del Monte y Majadahonda. Invisalign, implantes, estética dental y odontopediatría. Pide cita: 91 633 80 45 / 91 638 55 58.">
 <link rel="icon" href="https://dentalarroque.es/wp-content/uploads/2023/05/Logo-Dentalarroque-cuadrado.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/consent/consent.css">
+<script src="assets/consent/config.js"></script>
+<script src="assets/consent/consent.js" defer></script>
 <style>
 :root{
   --ink:#555959;
@@ -241,7 +244,7 @@ footer{background:var(--ink);color:#E2E4E4;padding:64px 0 120px;overflow:hidden}
 .foot-grid > div{min-width:0}
 .foot-grid a:hover{color:#fff;text-decoration:underline}
 .legal{border-top:1px solid rgba(255,255,255,.14);margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.88rem}
-.legal a{text-decoration:none;margin-right:16px}
+.legal a{text-decoration:none}
 @media (max-width:820px){.foot-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 @media (max-width:480px){.foot-grid{grid-template-columns:minmax(0,1fr)}}
 @media (min-width:921px){footer{padding-bottom:40px}}
@@ -297,6 +300,24 @@ footer{background:var(--ink);color:#E2E4E4;padding:64px 0 120px;overflow:hidden}
   .rv-marquee{-webkit-mask-image:none;mask-image:none;overflow-x:auto}
   .rv-track{width:auto}
 }
+
+/* legal & consent */
+.legal-links{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:0;padding:0}
+.legal-links a{text-decoration:none}
+.legal-links a:hover,.linkbtn:hover{color:#fff;text-decoration:underline}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
+.hours-note{font-size:.88rem;color:var(--muted);margin:-6px 0 0}
+.reg{font-size:.88rem;color:var(--muted);margin:0}
+.map-ph{height:230px;margin-top:auto;background:var(--mist);color:var(--text);display:grid;place-content:center;justify-items:center;gap:12px;padding:20px;text-align:center}
+.map-ph[hidden]{display:none}
+.map-ph p{margin:0;max-width:36ch;font-size:.95rem}
+.rv-controls{display:flex;justify-content:flex-end;margin:-28px 0 16px}
+.rv-toggle{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);border-radius:999px;padding:.55em 1.1em;font:600 .92rem var(--body);cursor:pointer}
+.rv-toggle:hover{border-color:#fff}
+.rv-marquee.paused .rv-track{animation-play-state:paused}
+:root{--cc-btn-bg:var(--ink);--cc-fg:var(--ink);--cc-muted:var(--muted);--cc-line:var(--line);--cc-focus:var(--pink-strong);--cc-font:var(--body);--cc-radius:18px}
+.cc-title{font-family:var(--display)}
+@media (max-width:920px){.cc-banner{bottom:84px}}
 
 /* mobile call bar */
 .callbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;grid-template-columns:1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line)}
@@ -538,6 +559,7 @@ footer{background:var(--ink);color:#E2E4E4;padding:64px 0 120px;overflow:hidden}
           <a href="https://maps.google.com/?cid=13532248361765277370" target="_blank" rel="noopener">Ver en Google</a>
         </div>
       </div>
+      <div class="rv-controls"><button type="button" class="rv-toggle" aria-pressed="false">Pausar reseñas</button></div>
       <div class="rv-marquee" aria-label="Reseñas de pacientes en Google"><div class="rv-track">
         <figure class="rv"><blockquote>“Inmejorable. El trato es exquisito, profesionalmente son impecables. Después de un tratamiento de un par de años de ortodoncia invisible con resultado perfecto son mis dentistas de cabecera.”</blockquote><cite>MsCromlech<span>Google, Boadilla</span></cite></figure>
         <figure class="rv"><blockquote>“Llevo yendo más de 15 años y siempre es genial, tanto el trato como el resultado.”</blockquote><cite>Celia Sanz<span>Google, Majadahonda</span></cite></figure>
@@ -634,8 +656,13 @@ footer{background:var(--ink);color:#E2E4E4;padding:64px 0 120px;overflow:hidden}
               <tr><th>jueves</th><td>10:00–14:00 y 15:00–20:00</td></tr>
               <tr><th>viernes</th><td>10:00–14:00 y 15:00–19:00</td></tr>
             </table>
+            <p class="hours-note">Horario habitual. En festivos puede variar: llámanos para confirmar.</p>
           </div>
-          <iframe loading="lazy" title="Mapa de la clínica de Boadilla del Monte" src="https://www.google.com/maps?q=DentaLARROQUE%20Av.%20Infante%20Don%20Luis%2013%2028660%20Boadilla%20del%20Monte&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map-ph" data-cc-placeholder="mapas">
+            <p>El mapa lo sirve Google Maps, que puede instalar cookies. Solo se carga si lo aceptas.</p>
+            <button type="button" class="btn btn-ink" data-cc-accept-category="mapas">Cargar mapas</button>
+          </div>
+          <iframe loading="lazy" title="Mapa de la clínica de Boadilla del Monte" data-cc-category="mapas" data-cc-src="https://www.google.com/maps?q=DentaLARROQUE%20Av.%20Infante%20Don%20Luis%2013%2028660%20Boadilla%20del%20Monte&output=embed" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
         </article>
         <article class="clinic">
           <img loading="lazy" src="https://dentalarroque.es/wp-content/uploads/2023/07/sala-de-espera-dentalarroque-majadahonda.jpg" alt="Sala de espera de la clínica DentaLARROQUE en Majadahonda">
@@ -656,8 +683,13 @@ footer{background:var(--ink);color:#E2E4E4;padding:64px 0 120px;overflow:hidden}
               <tr><th>jueves</th><td>10:00–14:00 y 15:00–20:00</td></tr>
               <tr><th>viernes</th><td>10:00–14:00 y 15:00–19:00</td></tr>
             </table>
+            <p class="hours-note">Horario habitual. En festivos puede variar: llámanos para confirmar.</p>
           </div>
-          <iframe loading="lazy" title="Mapa de la clínica de Majadahonda" src="https://www.google.com/maps?q=DentaLARROQUE%20Avenida%20de%20Espa%C3%B1a%2026%2028220%20Majadahonda&output=embed" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map-ph" data-cc-placeholder="mapas">
+            <p>El mapa lo sirve Google Maps, que puede instalar cookies. Solo se carga si lo aceptas.</p>
+            <button type="button" class="btn btn-ink" data-cc-accept-category="mapas">Cargar mapas</button>
+          </div>
+          <iframe loading="lazy" title="Mapa de la clínica de Majadahonda" data-cc-category="mapas" data-cc-src="https://www.google.com/maps?q=DentaLARROQUE%20Avenida%20de%20Espa%C3%B1a%2026%2028220%20Majadahonda&output=embed" referrerpolicy="no-referrer-when-downgrade" hidden></iframe>
         </article>
       </div>
     </div>
@@ -695,8 +727,15 @@ footer{background:var(--ink);color:#E2E4E4;padding:64px 0 120px;overflow:hidden}
       </div>
     </div>
     <div class="legal">
-      <span>Clínica Dental DentaLARROQUE ©2026</span>
-      <span><a href="https://dentalarroque.es/aviso-legal-y-condiciones-de-uso/">Aviso legal</a><a href="https://dentalarroque.es/aviso-legal-y-condiciones-de-uso/politica-de-privacidad/">Privacidad</a><a href="https://dentalarroque.es/aviso-legal-y-condiciones-de-uso/politica-de-cookies/">Cookies</a></span>
+      <span>© <span data-year>2026</span> Clínica Dental DentaLARROQUE</span>
+      <nav aria-label="Información legal">
+        <ul class="legal-links">
+          <li><a href="https://dentalarroque.es/aviso-legal-y-condiciones-de-uso/">Aviso legal</a></li>
+          <li><a href="https://dentalarroque.es/aviso-legal-y-condiciones-de-uso/politica-de-privacidad/">Política de privacidad</a></li>
+          <li><a href="https://dentalarroque.es/aviso-legal-y-condiciones-de-uso/politica-de-cookies/">Política de cookies</a></li>
+          <li><button type="button" class="linkbtn" data-cc-open>Configurar cookies</button></li>
+        </ul>
+      </nav>
     </div>
   </div>
 </footer>
@@ -751,6 +790,16 @@ footer{background:var(--ink);color:#E2E4E4;padding:64px 0 120px;overflow:hidden}
   const track=document.querySelector('.rv-track');
   if(track&&!reduce){
     [...track.children].forEach(c=>{const k=c.cloneNode(true);k.setAttribute('aria-hidden','true');track.appendChild(k)});
+  }
+
+  /* año automático */
+  document.querySelectorAll('[data-year]').forEach(el=>{el.textContent=new Date().getFullYear()});
+
+  /* pausa del carrusel de reseñas (WCAG 2.2.2) */
+  const rvBtn=document.querySelector('.rv-toggle'),rvM=document.querySelector('.rv-marquee');
+  if(rvBtn){
+    if(reduce)rvBtn.parentElement.hidden=true;
+    rvBtn.addEventListener('click',()=>{const p=rvM.classList.toggle('paused');rvBtn.setAttribute('aria-pressed',p);rvBtn.textContent=p?'Reanudar reseñas':'Pausar reseñas'});
   }
 
   /* team arrows */

@@ -1,0 +1,59 @@
+/* cc-consent — estilos base. Adaptar las variables al sistema de diseño del sitio.
+   Regla AEPD: "Aceptar" y "Rechazar" deben tener la MISMA jerarquía visual — no cambiar
+   el estilo de un solo botón. */
+:root {
+  --cc-bg: #ffffff;
+  --cc-fg: #1f2328;
+  --cc-muted: #57606a;
+  --cc-line: #d0d7de;
+  --cc-btn-bg: #1f2328;
+  --cc-btn-fg: #ffffff;
+  --cc-focus: #0969da;
+  --cc-radius: 12px;
+  --cc-font: inherit;
+}
+.cc-banner {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 2147483000;
+  max-width: 760px; margin: 0 auto; padding: 20px 22px;
+  background: var(--cc-bg); color: var(--cc-fg); font-family: var(--cc-font);
+  border: 1px solid var(--cc-line); border-radius: var(--cc-radius);
+  box-shadow: 0 10px 40px rgba(0,0,0,.18);
+}
+.cc-title { margin: 0 0 6px; font-size: 1.1rem; line-height: 1.3; color: var(--cc-fg); }
+.cc-body { margin: 0 0 14px; font-size: .95rem; line-height: 1.5; color: var(--cc-muted); }
+.cc-body a { color: inherit; text-decoration: underline; }
+/* Rejilla: los tres botones siempre con el mismo ancho y alto (igualdad visual aceptar/rechazar) */
+.cc-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; align-items: stretch; }
+.cc-btn {
+  min-height: 44px; padding: .7em 1.1em; cursor: pointer;
+  font: 600 .95rem/1.2 var(--cc-font);
+  background: var(--cc-btn-bg); color: var(--cc-btn-fg);
+  border: 2px solid var(--cc-btn-bg); border-radius: 999px;
+}
+.cc-btn:hover { filter: brightness(1.15); }
+.cc-btn:focus-visible, .cc-close:focus-visible, .cc-switch input:focus-visible, .cc-modal:focus-visible { outline: 3px solid var(--cc-focus); outline-offset: 2px; }
+.cc-overlay { position: fixed; inset: 0; z-index: 2147483001; background: rgba(0,0,0,.45); display: grid; place-items: center; padding: 16px; }
+.cc-modal {
+  position: relative; width: min(620px, 100%); max-height: calc(100vh - 32px); overflow: auto;
+  background: var(--cc-bg); color: var(--cc-fg); font-family: var(--cc-font);
+  border-radius: var(--cc-radius); padding: 26px 24px 22px;
+}
+.cc-close { position: absolute; top: 10px; right: 12px; width: 40px; height: 40px; border: 0; background: none; font-size: 1.6rem; line-height: 1; cursor: pointer; color: var(--cc-fg); border-radius: 8px; }
+.cc-cats { list-style: none; margin: 0 0 18px; padding: 0; }
+.cc-cat { border-top: 1px solid var(--cc-line); padding: 14px 0; }
+.cc-cat p { margin: 6px 0 0; font-size: .9rem; color: var(--cc-muted); line-height: 1.45; }
+.cc-cat-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.cc-cat-label { font-weight: 600; }
+.cc-always { font-size: .85rem; color: var(--cc-muted); }
+.cc-switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+.cc-switch input { width: 20px; height: 20px; accent-color: var(--cc-btn-bg); }
+[data-cc-placeholder] { display: grid; place-items: center; gap: 10px; padding: 24px; text-align: center; background: #f1f2f3; color: #1f2328; }
+[data-cc-placeholder][hidden] { display: none; }
+@media (max-width: 520px) {
+  .cc-banner { left: 8px; right: 8px; bottom: 8px; padding: 16px; }
+  .cc-actions { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cc-banner { animation: cc-in .3s ease-out; }
+  @keyframes cc-in { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+}
